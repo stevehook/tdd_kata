@@ -8,7 +8,7 @@ class Calculator
     if /^\/\/([^\d])\n(.+)/ =~ input
       delimiter = $1
       input = $2
-    end
+    s end
     strings = input.split(delimiter || /,|\n/)
     numbers = strings.collect { |n| n.to_i }.select { |n| n <= 1000 }
     negative_numbers = numbers.select { |n| n < 0 }
