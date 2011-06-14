@@ -1,8 +1,13 @@
 class Calculator
   def add(input)
     return 0 if input == ''
-    if /^\/\/([^\d]+)\n/ =~ input
+    if /^\/\/\[([^\d]+)\]\n(.+)/ =~ input
       delimiter = $1
+      input = $2
+    end
+    if /^\/\/([^\d])\n(.+)/ =~ input
+      delimiter = $1
+      input = $2
     end
     strings = input.split(delimiter || /,|\n/)
     numbers = strings.collect { |n| n.to_i }.select { |n| n <= 1000 }
