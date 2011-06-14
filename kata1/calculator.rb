@@ -1,7 +1,7 @@
 class Calculator
   def add(input)
     return 0 if input == ''
-    if /^([^\d]+)\n/ =~ input
+    if /^\/\/([^\d]+)\n/ =~ input
       delimiter = $1
     end
     strings = input.split(delimiter || /,|\n/)

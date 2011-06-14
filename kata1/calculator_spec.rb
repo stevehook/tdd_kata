@@ -27,8 +27,8 @@ describe Calculator do
     @calc.add("1,2\n3").should == 6
   end
 
-  it 'should return 6 given the string //\n1//2//3' do
-    @calc.add("//\n1//2//3").should == 6
+  it 'should return 6 given the string //;\n1//2//3' do
+    @calc.add("//;\n1;2;3").should == 6
   end
 
   it 'should raise an exception if there are negative numbers' do
