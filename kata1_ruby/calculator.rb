@@ -4,7 +4,7 @@ class Calculator
   def add(input)
     return 0 if input == ''
     delimiter, input = get_delimiter(input)
-    strings = input.split(/#{delimiter}|\n/)
+    strings = input.gsub("\n", delimiter).split(delimiter)
     numbers = strings.collect { |n| n.to_i }.select { |n| n <= 1000 }
     raise_exception_for_negatives(numbers)
     numbers.inject { |sum, n| sum + n }
