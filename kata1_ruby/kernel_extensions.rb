@@ -1,6 +1,12 @@
 module Kernel
   class << self
-    attr_accessor :last_output, :next_input
+    attr_accessor :last_output, :next_input, :next_input_index
+
+    def reset_io_fakes
+      Kernel.last_output = nil
+      Kernel.next_input = nil
+      Kernel.next_input_index = 0
+    end
   end
 
   def puts(output)
@@ -9,6 +15,8 @@ module Kernel
   end
 
   def gets
-    Kernel.next_input
+    input = Kernel.next_input[next_input_index]
+    next_input_index += 1
+    input
   end
 end
