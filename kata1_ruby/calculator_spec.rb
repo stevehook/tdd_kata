@@ -3,9 +3,12 @@ require 'rspec'
 require './calculator'
 
 module Kernel
-  attr_accessor :last_output
+  class << self
+    attr_accessor :last_output
+  end
+
   def puts(output)
-    @last_output = output
+    Kernel.last_output = output.to_s
   end
 end
 
@@ -60,6 +63,6 @@ describe Calculator do
 
   it 'should print 3 to the console given the string 1,2' do
     @calc.add('1,2').should == 3
-    last_output.should == '0'
+    Kernel.last_output.should == '3'
   end
 end

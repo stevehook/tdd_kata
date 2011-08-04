@@ -8,7 +8,9 @@ class Calculator
     strings = input.gsub("\n", delimiters[0]).split(delimiter_regexp)
     numbers = strings.collect { |n| n.to_i }.select { |n| n <= 1000 }
     raise_exception_for_negatives(numbers)
-    numbers.inject { |sum, n| sum + n }
+    result = numbers.inject { |sum, n| sum + n }
+    puts result
+    result
   end
 
   def raise_exception_for_negatives(numbers)
