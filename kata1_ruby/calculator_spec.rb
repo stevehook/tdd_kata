@@ -2,6 +2,13 @@ require 'rubygems'
 require 'rspec'
 require './calculator'
 
+module Kernel
+  attr_accessor :last_output
+  def puts(output)
+    @last_output = output
+  end
+end
+
 describe Calculator do
   before(:each) do
     @calc = Calculator.new
@@ -49,5 +56,10 @@ describe Calculator do
 
   it 'should raise an exception if there are negative numbers' do
     expect { @calc.add('1,-2,3') }.to raise_error('Negatives not allowed: -2')
+  end
+
+  it 'should print 3 to the console given the string 1,2' do
+    @calc.add('1,2').should == 3
+    last_output.should == '0'
   end
 end
