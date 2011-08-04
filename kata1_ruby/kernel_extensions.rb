@@ -15,8 +15,8 @@ module Kernel
   end
 
   def gets
-    input = Kernel.next_input[next_input_index]
-    next_input_index += 1
+    input = Kernel.next_input.nil? ? nil : Kernel.next_input[Kernel.next_input_index]
+    Kernel.next_input_index += 1
     input
   end
 end
