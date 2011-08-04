@@ -1,6 +1,6 @@
 require './calculator'
 
-input = ARGV[0]
+input = ARGV.shift
 while !input.nil? && input != ''
   result = Calculator.new.add(input, false)
   puts "The result is #{result}"
