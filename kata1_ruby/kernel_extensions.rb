@@ -4,6 +4,7 @@ module Kernel
   end
 
   def puts(output)
-    Kernel.last_output = output.to_s
+    Kernel.last_output ||= []
+    Kernel.last_output << output.to_s
   end
 end

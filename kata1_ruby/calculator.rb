@@ -1,7 +1,7 @@
 class Calculator
   DEFAULT_DELIMITER = ','
 
-  def add(input)
+  def add(input, write_result = true)
     return 0 if input == ''
     delimiters, input = get_delimiter(input)
     delimiter_regexp = Regexp.new(delimiters.map{|d| Regexp.escape(d)}.join('|'))
@@ -9,7 +9,7 @@ class Calculator
     numbers = strings.collect { |n| n.to_i }.select { |n| n <= 1000 }
     raise_exception_for_negatives(numbers)
     result = numbers.inject { |sum, n| sum + n }
-    puts result
+    puts result if write_result
     result
   end
 

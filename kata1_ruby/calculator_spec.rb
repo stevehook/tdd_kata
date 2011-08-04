@@ -6,6 +6,7 @@ require './kernel_extensions'
 describe Calculator do
   before(:each) do
     @calc = Calculator.new
+    Kernel.last_output = nil
   end
 
   it 'should return 0 given an empty string' do
@@ -54,6 +55,7 @@ describe Calculator do
 
   it 'should print 3 to the console given the string 1,2' do
     @calc.add('1,2').should == 3
-    Kernel.last_output.should == '3'
+    Kernel.last_output.length.should == 1
+    Kernel.last_output[0].should == '3'
   end
 end
