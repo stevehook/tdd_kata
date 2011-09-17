@@ -1,3 +1,5 @@
+require '../calculator.coffee'
+
 describe 'calculator', ->
-  it 'should do nothing yet', ->
-    expect(true).toBeTruthy()
+  it 'should create a new calculator', ->
+    calculator = new Calculator
