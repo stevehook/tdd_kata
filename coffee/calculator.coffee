@@ -1,3 +1,3 @@
-global.Calculator = class Calculator
+exports.Calculator = class Calculator
   add: (input) ->
     0

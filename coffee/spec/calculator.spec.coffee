@@ -1,5 +1,5 @@
-require '../calculator.coffee'
+calc = require '../calculator.coffee'
 
 describe 'calculator', ->
   it 'should create a new calculator', ->
-    calculator = new Calculator
+    calculator = new calc.Calculator
