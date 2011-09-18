@@ -18,3 +18,6 @@ describe 'calculator', ->
   it "should return 6 for '1\n2,3'", ->
     expect(calculator.add '1\n2,3').toEqual 6
 
+  it "should return 10 for '//;\\n1;2;3;4'", ->
+    expect(calculator.add '//;\n1;2;3;4').toEqual 10
+
