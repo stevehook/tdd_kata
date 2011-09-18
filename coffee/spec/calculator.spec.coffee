@@ -22,5 +22,8 @@ describe 'calculator', ->
     expect(calculator.add '//;\n1;2;3;4').toEqual 10
 
   it "should throw an exception with a negative number", ->
-    expect(-> calculator.add '2,-3,4').toThrow 'Negative numbers are not allowed'
+    expect(-> calculator.add '2,-3,4').toThrow 'Negative numbers are not allowed: -3'
+
+  it "should throw an exception with a negative number", ->
+    expect(-> calculator.add '2,-3,4,-5').toThrow 'Negative numbers are not allowed: -3, -5'
 
