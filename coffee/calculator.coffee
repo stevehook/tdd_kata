@@ -5,6 +5,7 @@ exports.Calculator = class Calculator
     numberStrings = trimmedInput.split delimiter
     for numberString in numberStrings
       num = parseInt numberString
+      throw 'Negative numbers are not allowed' if num && num < 0
       result += num if num
     result
 
