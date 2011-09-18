@@ -27,3 +27,6 @@ describe 'calculator', ->
   it "should throw an exception with a negative number", ->
     expect(-> calculator.add '2,-3,4,-5').toThrow 'Negative numbers are not allowed: -3, -5'
 
+  it "should ignore numbers over 1000", ->
+    expect(calculator.add '1,1001,2').toEqual 3
+
