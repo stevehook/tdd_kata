@@ -3,10 +3,12 @@ exports.Calculator = class Calculator
     result = 0
     [delimiter, trimmedInput] = this.getDelimiter input
     numberStrings = trimmedInput.split delimiter
+    negatives = []
     for numberString in numberStrings
       num = parseInt numberString
-      throw 'Negative numbers are not allowed' if num && num < 0
+      negatives.push num if num && num < 0
       result += num if num
+    throw ('Negative numbers are not allowed: ' + negatives.join(', ')) if negatives.length > 0
     result
 
   getDelimiter: (input) ->
