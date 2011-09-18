@@ -1,8 +1,9 @@
 exports.Calculator = class Calculator
   add: (input) ->
     result = 0
-    [delimiter, trimmedInput] = this.getDelimiter input
-    numberStrings = trimmedInput.split delimiter
+    [delimiters, trimmedInput] = this.getDelimiter input
+    delimiterRegex = new RegExp delimiters.join('|')
+    numberStrings = trimmedInput.split delimiterRegex
     negatives = []
     for numberString in numberStrings
       num = parseInt numberString
@@ -14,6 +15,11 @@ exports.Calculator = class Calculator
   getDelimiter: (input) ->
     match = input.match /^\/\/(.+)\n(.+)/
     if match
-      [match[1], match[2]]
+      matchDelimiters = match[1].match /[(.+)]/
+      if matchDelimiters
+        delimiters = matchDelimiters[1].split ']['
+      else
+        delimiters = [match[1]]
+      [delimiters, match[2]]
     else
-      [/\n|,/, input]
+      [['\n', ','], input]
