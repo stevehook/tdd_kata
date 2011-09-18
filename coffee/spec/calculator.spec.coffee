@@ -21,8 +21,11 @@ describe 'calculator', ->
   it "should return 10 for '//;\\n1;2;3;4'", ->
     expect(calculator.add '//;\n1;2;3;4').toEqual 10
 
-  it "should return 10 for '//[***]\n1***2***3***4", ->
+  it "should return 10 for '//[***]\n1***2***3***4'", ->
     expect(calculator.add '//[***]\n1***2***3***4').toEqual 10
+
+  it "should return 10 for '//[***][$$$][&&&]\n1***2$$$3&&&4'", ->
+    expect(calculator.add '//[***][$$$][&&&]\n1***2$$$3&&&4').toEqual 10
 
   it "should throw an exception with a negative number", ->
     expect(-> calculator.add '2,-3,4').toThrow 'Negative numbers are not allowed: -3'
