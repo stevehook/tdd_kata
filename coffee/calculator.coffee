@@ -2,8 +2,7 @@ exports.Calculator = class Calculator
   add: (input) ->
     result = 0
     [delimiters, trimmedInput] = this.getDelimiter input
-    console.log delimiters
-    delimiterRegex = new RegExp delimiters.join('|')
+    delimiterRegex = new RegExp delimiters.map((s) -> (s.replace(/[\^\*\[\{\(\)\.\$\+\|\?\<\>]/g, (c) -> "\\#{c}"))).join('|')
     numberStrings = trimmedInput.split delimiterRegex
     negatives = []
     for numberString in numberStrings
@@ -16,7 +15,6 @@ exports.Calculator = class Calculator
   getDelimiter: (input) ->
     match = input.match /^\/\/(.+)\n(.+)/
     if match
-      console.log match[1]
       matchDelimiters = match[1].match /\[(.+)\]/
       if matchDelimiters
         delimiters = matchDelimiters[1].split ']['
