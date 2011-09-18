@@ -7,7 +7,7 @@ exports.Calculator = class Calculator
     for numberString in numberStrings
       num = parseInt numberString
       negatives.push num if num && num < 0
-      result += num if num
+      result += num if num && num <= 1000
     throw ('Negative numbers are not allowed: ' + negatives.join(', ')) if negatives.length > 0
     result
 
