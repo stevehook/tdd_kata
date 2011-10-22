@@ -34,8 +34,13 @@ class BowlingGame
   end
 
   def next_score(index)
-    frame = @frames[index + 1]
-    frame[0]
+    if index == 9
+      frame = @frames[index]
+      frame[2]
+    else
+      frame = @frames[index + 1]
+      frame[0]
+    end
   end
 
   def next_two_scores(index)

@@ -51,4 +51,12 @@ describe BowlingGame do
     @game.next_two_scores(9).should == 20
     @game.score.should == 300
   end
+
+  it "should double to score of the last throw when a spare is scored in the final frame" do
+    18.times { @game.roll(0) }
+    @game.roll(5)
+    @game.roll(5)
+    @game.roll(3)
+    @game.score.should == 16
+  end
 end
