@@ -31,4 +31,12 @@ describe BowlingGame do
     16.times { @game.roll(0) }
     @game.score.should == 26
   end
+
+  it "should double the score of a strike following a spare" do
+    @game.roll(5)
+    @game.roll(5)
+    @game.roll(10)
+    16.times { @game.roll(0) }
+    @game.score.should == 30
+  end
 end
