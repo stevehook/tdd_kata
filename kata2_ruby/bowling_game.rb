@@ -1,9 +1,13 @@
 class BowlingGame
+  def initialize
+    @total = 0
+  end
+
   def roll(pins)
-    
+    @total += pins
   end
 
   def score
-    0
+    @total
   end
 end
