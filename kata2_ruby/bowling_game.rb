@@ -19,6 +19,7 @@ class BowlingGame
     total_score = 0
     @frames.each_with_index do |frame, index|
       frame_score = frame.inject { |sum, n| sum + n }
+      frame_score = 10 if frame_score > 10
       is_spare = frame_score == 10
       is_strike = frame[0] == 10
       if is_strike

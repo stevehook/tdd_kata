@@ -48,6 +48,7 @@ describe BowlingGame do
 
   it "should score 300 for perfect game" do
     12.times { @game.roll(10) }
+    @game.next_two_scores(9).should == 20
     @game.score.should == 300
   end
 end
