@@ -31,7 +31,8 @@ class BowlingGame
   end
 
   def next_score(index)
-    0
+    frame = @frames[index + 1]
+    frame[0]
   end
 
   def next_two_scores(index)
