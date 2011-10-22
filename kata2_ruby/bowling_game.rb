@@ -21,8 +21,10 @@ class BowlingGame
       frame_score = frame.inject { |sum, n| sum + n }
       if is_strike
         total_score += frame_score * 2
-      else 
-        total_score += is_spare ? frame[0] * 2 + frame[1] : frame_score
+      elsif is_spare 
+        total_score += frame[0] * 2 + frame[1]
+      else
+        total_score += frame_score
       end
       is_spare = frame_score == 10
       is_strike = frame[0] == 10
