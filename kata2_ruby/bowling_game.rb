@@ -15,21 +15,26 @@ class BowlingGame
 
   def score
     total_score = 0
-    is_spare = false
-    is_strike = false
-    @frames.each do |frame|
+    @frames.each_with_index do |frame, index|
       frame_score = frame.inject { |sum, n| sum + n }
+      is_spare = frame_score == 10
+      is_strike = frame[0] == 10
       if is_strike
-        total_score += frame_score * 2
+        total_score += frame_score + next_two_scores(index)
       elsif is_spare 
-        total_score += (frame[0] * 2)
-        total_score += frame[1] if frame.size > 1
+        total_score += frame_score + next_score(index)
       else
         total_score += frame_score
       end
-      is_spare = frame_score == 10
-      is_strike = frame[0] == 10
     end
     total_score
+  end
+
+  def next_score(index)
+    0
+  end
+
+  def next_two_scores(index)
+    0
   end
 end
