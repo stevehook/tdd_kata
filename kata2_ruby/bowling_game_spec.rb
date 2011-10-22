@@ -57,6 +57,6 @@ describe BowlingGame do
     @game.roll(5)
     @game.roll(5)
     @game.roll(3)
-    @game.score.should == 16
+    @game.score.should == 13
   end
 end
