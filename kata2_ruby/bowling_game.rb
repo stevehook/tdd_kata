@@ -6,7 +6,9 @@ class BowlingGame
 
   def roll(score)
     last = @frames.last
-    if last && last.size < 2 && last[0] != 10
+    if @frames.size == 10
+      last << score
+    elsif last && last.size < 2 && last[0] != 10
       last << score
     else
       @frames << [score]
@@ -36,11 +38,16 @@ class BowlingGame
   end
 
   def next_two_scores(index)
-    frame = @frames[index + 1]
-    if frame.size == 1
-      frame[0] + @frames[index + 2][0]
+    if index == 9
+      frame = @frames[index]
+      frame[1] + frame[2]
     else
-      frame[0] + frame[1]
+      frame = @frames[index + 1]
+      if frame.size == 1
+        frame[0] + @frames[index + 2][0]
+      else
+        frame[0] + frame[1]
+      end
     end
   end
 end
