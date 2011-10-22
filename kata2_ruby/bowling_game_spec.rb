@@ -46,8 +46,8 @@ describe BowlingGame do
     @game.score.should == 60
   end
 
-  # it "should score 300 for perfect game" do
-  #   11.times { @game.roll(10) }
-  #   @game.score.should == 300
-  # end
+  it "should score 300 for perfect game" do
+    11.times { @game.roll(10) }
+    @game.score.should == 300
+  end
 end
