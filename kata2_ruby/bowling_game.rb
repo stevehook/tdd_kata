@@ -6,7 +6,7 @@ class BowlingGame
 
   def roll(score)
     last = @frames.last
-    if last && last.size < 2
+    if last && last.size < 2 && last[0] != 10
       last << score
     else
       @frames << [score]
@@ -16,10 +16,16 @@ class BowlingGame
   def score
     total_score = 0
     is_spare = false
+    is_strike = false
     @frames.each do |frame|
       frame_score = frame.inject { |sum, n| sum + n }
-      total_score += is_spare ? frame[0] * 2 + frame[1] : frame_score
+      if is_strike
+        total_score += frame_score * 2
+      else 
+        total_score += is_spare ? frame[0] * 2 + frame[1] : frame_score
+      end
       is_spare = frame_score == 10
+      is_strike = frame[0] == 10
     end
     total_score
   end
