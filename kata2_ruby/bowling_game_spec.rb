@@ -15,4 +15,12 @@ describe BowlingGame do
     20.times { @game.roll(1) }
     @game.score.should == 20
   end
+
+  it "should double next score when a spare is thrown" do
+    @game.roll(5)
+    @game.roll(5)
+    @game.roll(3)
+    17.times { @game.roll(0) }
+    @game.score.should == 16
+  end
 end
