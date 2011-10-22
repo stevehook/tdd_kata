@@ -22,7 +22,8 @@ class BowlingGame
       if is_strike
         total_score += frame_score * 2
       elsif is_spare 
-        total_score += frame[0] * 2 + frame[1]
+        total_score += (frame[0] * 2)
+        total_score += frame[1] if frame.size > 1
       else
         total_score += frame_score
       end
